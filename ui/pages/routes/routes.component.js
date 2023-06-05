@@ -7,6 +7,7 @@ import IdleTimer from 'react-idle-timer';
 ///: BEGIN:ONLY_INCLUDE_IN(desktop)
 import browserAPI from 'webextension-polyfill';
 ///: END:ONLY_INCLUDE_IN
+
 import SendTransactionScreen from '../send';
 import Swaps from '../swaps';
 import ConfirmTransaction from '../confirm-transaction';
@@ -18,8 +19,6 @@ import Lock from '../lock';
 import PermissionsConnect from '../permissions-connect';
 import RestoreVaultPage from '../keychains/restore-vault';
 import RevealSeedConfirmation from '../keychains/reveal-seed';
-import ImportTokenPage from '../import-token';
-import ConfirmImportTokenPage from '../confirm-import-token';
 import ConfirmAddSuggestedTokenPage from '../confirm-add-suggested-token';
 import CreateAccountPage from '../create-account/create-account.component';
 import ConfirmAddSuggestedNftPage from '../confirm-add-suggested-nft';
@@ -33,6 +32,7 @@ import {
   NetworkListMenu,
   AccountDetails,
   ImportNftsModal,
+  ImportTokensPopover,
 } from '../../components/multichain';
 import UnlockPage from '../unlock-page';
 import Alerts from '../../components/app/alerts';
@@ -59,7 +59,6 @@ import CustodyPage from '../institutional/custody';
 ///: END:ONLY_INCLUDE_IN
 
 import {
-  IMPORT_TOKEN_ROUTE,
   ASSET_ROUTE,
   CONFIRM_ADD_SUGGESTED_TOKEN_ROUTE,
   CONFIRM_ADD_SUGGESTED_NFT_ROUTE,
@@ -76,7 +75,6 @@ import {
   UNLOCK_ROUTE,
   BUILD_QUOTE_ROUTE,
   CONFIRMATION_V_NEXT_ROUTE,
-  CONFIRM_IMPORT_TOKEN_ROUTE,
   ONBOARDING_ROUTE,
   ONBOARDING_UNLOCK_ROUTE,
   TOKEN_DETAILS,
@@ -159,6 +157,8 @@ export default class Routes extends Component {
     accountDetailsAddress: PropTypes.string,
     isImportNftsModalOpen: PropTypes.bool.isRequired,
     hideImportNftsModal: PropTypes.func.isRequired,
+    isImportTokensPopoverOpen: PropTypes.bool.isRequired,
+    hideImportTokensPopover: PropTypes.func.isRequired,
   };
 
   static contextTypes = {
@@ -276,16 +276,6 @@ export default class Routes extends Component {
           exact
         />
         <Authenticated path={SWAPS_ROUTE} component={Swaps} />
-        <Authenticated
-          path={IMPORT_TOKEN_ROUTE}
-          component={ImportTokenPage}
-          exact
-        />
-        <Authenticated
-          path={CONFIRM_IMPORT_TOKEN_ROUTE}
-          component={ConfirmImportTokenPage}
-          exact
-        />
         <Authenticated
           path={CONFIRM_ADD_SUGGESTED_TOKEN_ROUTE}
           component={ConfirmAddSuggestedTokenPage}
@@ -512,9 +502,11 @@ export default class Routes extends Component {
       isNetworkMenuOpen,
       toggleNetworkMenu,
       accountDetailsAddress,
+      isImportTokensPopoverOpen,
       location,
       isImportNftsModalOpen,
       hideImportNftsModal,
+      hideImportTokensPopover,
     } = this.props;
     const loadMessage =
       loadingMessage || isNetworkLoading
@@ -575,6 +567,9 @@ export default class Routes extends Component {
         ) : null}
         {isImportNftsModalOpen ? (
           <ImportNftsModal onClose={() => hideImportNftsModal()} />
+        ) : null}
+        {isImportTokensPopoverOpen ? (
+          <ImportTokensPopover onClose={() => hideImportTokensPopover()} />
         ) : null}
         <Box className="main-container-wrapper">
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
