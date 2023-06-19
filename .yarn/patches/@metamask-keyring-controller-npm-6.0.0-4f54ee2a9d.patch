@@ -1,0 +1,32 @@
+diff --git a/dist/KeyringController.d.ts b/dist/KeyringController.d.ts
+index dff777b90f9479e4d888257498fd55fc038f4d72..9270be0e6d1498ac2828e102d67637782d1a6d32 100644
+--- a/dist/KeyringController.d.ts
++++ b/dist/KeyringController.d.ts
+@@ -141,6 +141,10 @@ export declare class KeyringController extends BaseControllerV2<typeof name, Key
+      * @param opts.state - Initial state to set on this controller.
+      */
+     constructor({ removeIdentity, syncIdentities, updateIdentities, setSelectedAddress, setAccountLabel, encryptor, keyringBuilders, cacheEncryptionKey, messenger, state, }: KeyringControllerOptions);
++    /**
++     * Gets the internal keyring controller.
++     */
++    getEthKeyringController(): any;
+     /**
+      * Adds a new account to the default (first) HD seed phrase keyring.
+      *
+diff --git a/dist/KeyringController.js b/dist/KeyringController.js
+index c905cc0051e1cc4f3c69acfb1962c5675e30146c..546cd7617c28a7f768a968ae41b18e5e8de72c3b 100644
+--- a/dist/KeyringController.js
++++ b/dist/KeyringController.js
+@@ -139,6 +139,12 @@ class KeyringController extends base_controller_1.BaseControllerV2 {
+         this.setSelectedAddress = setSelectedAddress;
+         this.setAccountLabel = setAccountLabel;
+     }
++    /**
++     * Gets the internal keyring controller.
++     */
++    getEthKeyringController() {
++        return __classPrivateFieldGet(this, _KeyringController_keyring, "f");
++    }
+     /**
+      * Adds a new account to the default (first) HD seed phrase keyring.
+      *
