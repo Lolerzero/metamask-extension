@@ -2,8 +2,7 @@ import EventEmitter from 'events';
 import pump from 'pump';
 import { ObservableStore } from '@metamask/obs-store';
 import { storeAsStream } from '@metamask/obs-store/dist/asStream';
-import { JsonRpcEngine } from 'json-rpc-engine';
-import { createAsyncMiddleware } from 'json-rpc-engine';
+import { JsonRpcEngine, createAsyncMiddleware } from 'json-rpc-engine';
 import { createEngineStream } from 'json-rpc-middleware-stream';
 import { providerAsMiddleware } from '@metamask/eth-json-rpc-middleware';
 import { debounce } from 'lodash';
@@ -1405,7 +1404,7 @@ export default class MetamaskController extends EventEmitter {
 
     this.selectedNetworkController = new SelectedNetworkController({
       messenger: this.controllerMessenger,
-      switchNetwork: (a) => { }
+      switchNetwork: (a) => {},
     });
 
     // ensure accountTracker updates balances after network change
@@ -3979,7 +3978,14 @@ export default class MetamaskController extends EventEmitter {
 
         // if method call depends on chainId
         // Add 'next' promise to a queue
+<<<<<<< HEAD
         this.selectedNetworkController.enqueueRequest(chainIdForRequest, next());
+=======
+        this.selectedNetworkController.enqueueRequest(
+          chainIdForRequest,
+          next(),
+        );
+>>>>>>> 7f15b5c791 (wip)
       }),
     );
 
