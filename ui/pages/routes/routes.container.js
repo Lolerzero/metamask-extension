@@ -14,7 +14,7 @@ import {
   isCurrentProviderCustom,
 } from '../../selectors';
 import {
-  hideImportTokensPopover,
+  hideImportTokensModal,
   lockMetamask,
   hideImportNftsModal,
   setCurrentCurrency,
@@ -64,7 +64,7 @@ function mapStateToProps(state) {
     completedOnboarding,
     isAccountMenuOpen: state.metamask.isAccountMenuOpen,
     isNetworkMenuOpen: state.metamask.isNetworkMenuOpen,
-    isImportTokensPopoverOpen: state.appState.importTokensPopoverOpen,
+    isimportTokensModalOpen: state.appState.importTokensModalOpen,
     accountDetailsAddress: state.appState.accountDetailsAddress,
     isImportNftsModalOpen: state.appState.importNftsModalOpen,
   };
@@ -82,7 +82,7 @@ function mapDispatchToProps(dispatch) {
     toggleAccountMenu: () => dispatch(toggleAccountMenu()),
     toggleNetworkMenu: () => dispatch(toggleNetworkMenu()),
     hideImportNftsModal: () => dispatch(hideImportNftsModal()),
-    hideImportTokensPopover: () => dispatch(hideImportTokensPopover()),
+    hideImportTokensModal: () => dispatch(hideImportTokensModal()),
   };
 }
 

@@ -32,7 +32,7 @@ import {
   NetworkListMenu,
   AccountDetails,
   ImportNftsModal,
-  ImportTokensPopover,
+  ImportTokensModal,
 } from '../../components/multichain';
 import UnlockPage from '../unlock-page';
 import Alerts from '../../components/app/alerts';
@@ -157,8 +157,8 @@ export default class Routes extends Component {
     accountDetailsAddress: PropTypes.string,
     isImportNftsModalOpen: PropTypes.bool.isRequired,
     hideImportNftsModal: PropTypes.func.isRequired,
-    isImportTokensPopoverOpen: PropTypes.bool.isRequired,
-    hideImportTokensPopover: PropTypes.func.isRequired,
+    isimportTokensModalOpen: PropTypes.bool.isRequired,
+    hideImportTokensModal: PropTypes.func.isRequired,
   };
 
   static contextTypes = {
@@ -502,11 +502,11 @@ export default class Routes extends Component {
       isNetworkMenuOpen,
       toggleNetworkMenu,
       accountDetailsAddress,
-      isImportTokensPopoverOpen,
+      isimportTokensModalOpen,
       location,
       isImportNftsModalOpen,
       hideImportNftsModal,
-      hideImportTokensPopover,
+      hideImportTokensModal,
     } = this.props;
     const loadMessage =
       loadingMessage || isNetworkLoading
@@ -568,8 +568,8 @@ export default class Routes extends Component {
         {isImportNftsModalOpen ? (
           <ImportNftsModal onClose={() => hideImportNftsModal()} />
         ) : null}
-        {isImportTokensPopoverOpen ? (
-          <ImportTokensPopover onClose={() => hideImportTokensPopover()} />
+        {isimportTokensModalOpen ? (
+          <ImportTokensModal onClose={() => hideImportTokensModal()} />
         ) : null}
         <Box className="main-container-wrapper">
           {isLoading ? <Loading loadingMessage={loadMessage} /> : null}
