@@ -426,12 +426,11 @@ export function addNewAccount(): ThunkAction<
     const oldIdentities = getState().metamask.identities;
     dispatch(showLoadingIndication());
 
-    let newIdentities;
+    let addedAccountAddress;
     try {
-      const { identities } = await submitRequestToBackground('addNewAccount', [
+      addedAccountAddress = await submitRequestToBackground('addNewAccount', [
         Object.keys(oldIdentities).length,
       ]);
-      newIdentities = identities;
     } catch (error) {
       dispatch(displayWarning(error));
       throw error;
@@ -439,11 +438,8 @@ export function addNewAccount(): ThunkAction<
       dispatch(hideLoadingIndication());
     }
 
-    const newAccountAddress = Object.keys(newIdentities).find(
-      (address) => !oldIdentities[address],
-    );
     await forceUpdateMetamaskState(dispatch);
-    return newAccountAddress;
+    return addedAccountAddress;
   };
 }
 
