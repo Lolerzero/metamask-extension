@@ -177,7 +177,6 @@ import DecryptMessageController from './controllers/decrypt-message';
 import TransactionController from './controllers/transactions';
 import DetectTokensController from './controllers/detect-tokens';
 import SwapsController from './controllers/swaps';
-import accountImporter from './account-import-strategies';
 import seedPhraseVerifier from './lib/seed-phrase-verifier';
 import MetaMetricsController from './controllers/metametrics';
 import { segment } from './lib/segment';
