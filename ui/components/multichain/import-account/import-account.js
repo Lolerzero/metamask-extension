@@ -80,7 +80,7 @@ export const ImportAccount = ({ onActionComplete }) => {
   }
 
   function getLoadingMessage(strategy) {
-    if (strategy === 'JSON File') {
+    if (strategy === 'json') {
       return (
         <>
           <Text width={BlockSize.ThreeFourths} fontWeight={FontWeight.Bold}>
