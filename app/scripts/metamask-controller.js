@@ -178,7 +178,6 @@ import TransactionController from './controllers/transactions';
 import DetectTokensController from './controllers/detect-tokens';
 import SwapsController from './controllers/swaps';
 import accountImporter from './account-import-strategies';
-import seedPhraseVerifier from './lib/seed-phrase-verifier';
 import MetaMetricsController from './controllers/metametrics';
 import { segment } from './lib/segment';
 import createMetaRPCHandler from './lib/createMetaRPCHandler';
@@ -3263,28 +3262,7 @@ export default class MetamaskController extends EventEmitter {
    * encoded as an array of UTF-8 bytes.
    */
   async verifySeedPhrase() {
-    const [primaryKeyring] = this.keyringController.getKeyringsByType(
-      KeyringType.hdKeyTree,
-    );
-    if (!primaryKeyring) {
-      throw new Error('MetamaskController - No HD Key Tree found');
-    }
-
-    const serialized = await primaryKeyring.serialize();
-    const seedPhraseAsBuffer = Buffer.from(serialized.mnemonic);
-
-    const accounts = await primaryKeyring.getAccounts();
-    if (accounts.length < 1) {
-      throw new Error('MetamaskController - No accounts found');
-    }
-
-    try {
-      await seedPhraseVerifier.verifyAccounts(accounts, seedPhraseAsBuffer);
-      return Array.from(seedPhraseAsBuffer.values());
-    } catch (err) {
-      log.error(err.message);
-      throw err;
-    }
+    return this.coreKeyringController.verifySeedPhrase();
   }
 
   /**
