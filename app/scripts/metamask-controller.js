@@ -84,6 +84,7 @@ import {
   ERC20,
   ERC721,
 } from '@metamask/controller-utils';
+import { wordlist } from '@metamask/scure-bip39/dist/wordlists/english';
 
 ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
 import { toChecksumHexAddress } from '../../shared/modules/hexstring-utils';
@@ -2724,80 +2725,90 @@ export default class MetamaskController extends EventEmitter {
    * of UTF-8 bytes.
    */
   async createNewVaultAndRestore(password, encodedSeedPhrase) {
-    let accounts, lastBalance;
+    const releaseLock = await this.createVaultMutex.acquire();
+    try {
+      let accounts, lastBalance;
 
-    const seedPhraseAsBuffer = Buffer.from(encodedSeedPhrase);
+      const seedPhraseAsBuffer = Buffer.from(encodedSeedPhrase);
 
-    const { keyringController } = this;
+      // clear known identities
+      this.preferencesController.setAddresses([]);
 
-    // clear known identities
-    this.preferencesController.setAddresses([]);
+      // clear permissions
+      this.permissionController.clearState();
 
-    // clear permissions
-    this.permissionController.clearState();
+      ///: BEGIN:ONLY_INCLUDE_IN(snaps)
+      // Clear snap state
+      this.snapController.clearState();
+      // Clear notification state
+      this.notificationController.clear();
+      ///: END:ONLY_INCLUDE_IN
 
-    ///: BEGIN:ONLY_INCLUDE_IN(snaps)
-    // Clear snap state
-    this.snapController.clearState();
-    // Clear notification state
-    this.notificationController.clear();
-    ///: END:ONLY_INCLUDE_IN
+      // clear accounts in accountTracker
+      this.accountTracker.clearAccounts();
 
-    // clear accounts in accountTracker
-    this.accountTracker.clearAccounts();
+      // clear cachedBalances
+      this.cachedBalancesController.clearCachedBalances();
 
-    // clear cachedBalances
-    this.cachedBalancesController.clearCachedBalances();
+      // clear unapproved transactions
+      this.txController.txStateManager.clearUnapprovedTxs();
 
-    // clear unapproved transactions
-    this.txController.txStateManager.clearUnapprovedTxs();
+      // create new vault
+      const vault = await this.coreKeyringController.createNewVaultAndRestore(
+        password,
+        this._bufferToUint8Array(seedPhraseAsBuffer),
+      );
 
-    // create new vault
-    const vault = await this.coreKeyringController.createNewVaultAndRestore(
-      password,
-      seedPhraseAsBuffer,
-    );
-
-    const ethQuery = new EthQuery(this.provider);
-    accounts = await keyringController.getAccounts();
-    lastBalance = await this.getBalance(
-      accounts[accounts.length - 1],
-      ethQuery,
-    );
-
-    const [primaryKeyring] = keyringController.getKeyringsByType(
-      KeyringType.hdKeyTree,
-    );
-    if (!primaryKeyring) {
-      throw new Error('MetamaskController - No HD Key Tree found');
-    }
-
-    // seek out the first zero balance
-    while (lastBalance !== '0x0') {
-      await keyringController.addNewAccount(primaryKeyring);
-      accounts = await keyringController.getAccounts();
+      const ethQuery = new EthQuery(this.provider);
+      accounts = await this.coreKeyringController.getAccounts();
       lastBalance = await this.getBalance(
         accounts[accounts.length - 1],
         ethQuery,
       );
+
+      // seek out the first zero balance
+      while (lastBalance !== '0x0') {
+        await this.coreKeyringController.addNewAccount(accounts.length);
+        accounts = await this.coreKeyringController.getAccounts();
+        lastBalance = await this.getBalance(
+          accounts[accounts.length - 1],
+          ethQuery,
+        );
+      }
+
+      // remove extra zero balance account potentially created from seeking ahead
+      if (accounts.length > 1 && lastBalance === '0x0') {
+        await this.removeAccount(accounts[accounts.length - 1]);
+        accounts = await this.coreKeyringController.getAccounts();
+      }
+
+      // This must be set as soon as possible to communicate to the
+      // keyring's iframe and have the setting initialized properly
+      // Optimistically called to not block MetaMask login due to
+      // Ledger Keyring GitHub downtime
+      const transportPreference =
+        this.preferencesController.getLedgerTransportPreference();
+      this.setLedgerTransportPreference(transportPreference);
+
+      this.selectFirstIdentity();
+      return vault;
+    } finally {
+      releaseLock();
     }
+  }
 
-    // remove extra zero balance account potentially created from seeking ahead
-    if (accounts.length > 1 && lastBalance === '0x0') {
-      await this.removeAccount(accounts[accounts.length - 1]);
-      accounts = await keyringController.getAccounts();
-    }
-
-    // This must be set as soon as possible to communicate to the
-    // keyring's iframe and have the setting initialized properly
-    // Optimistically called to not block MetaMask login due to
-    // Ledger Keyring GitHub downtime
-    const transportPreference =
-      this.preferencesController.getLedgerTransportPreference();
-    this.setLedgerTransportPreference(transportPreference);
-
-    this.selectFirstIdentity();
-    return vault;
+  /**
+   * Get a Uint8Array mnemonic from Buffer.
+   *
+   * @param {Buffer} mnemonic - The mnemonic phrase as a Buffer
+   * @returns {Uint8Array} The mnemonic phrase as a Uint8Array
+   */
+  _bufferToUint8Array(mnemonic) {
+    const indices = mnemonic
+      .toString()
+      .split(' ')
+      .map((word) => wordlist.indexOf(word));
+    return new Uint8Array(new Uint16Array(indices).buffer);
   }
 
   /**
