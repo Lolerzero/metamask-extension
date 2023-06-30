@@ -508,6 +508,7 @@ export default class Routes extends Component {
       hideImportNftsModal,
       hideImportTokensModal,
     } = this.props;
+
     const loadMessage =
       loadingMessage || isNetworkLoading
         ? this.getConnectingLabel(loadingMessage)
