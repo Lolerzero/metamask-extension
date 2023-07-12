@@ -88,7 +88,7 @@ exports[`Confirm Remove JWT should render correctly 1`] = `
                       >
                         0xaD6...538D
                         <span
-                          class="box mm-icon mm-icon--size-md box--margin-left-1 box--display-inline-block box--flex-direction-row box--color-primary-default"
+                          class="mm-box mm-icon mm-icon--size-md mm-box--margin-left-1 mm-box--display-inline-block mm-box--color-primary-default"
                           style="mask-image: url('./images/icons/undefined.svg');"
                         />
                       </span>
@@ -106,7 +106,7 @@ exports[`Confirm Remove JWT should render correctly 1`] = `
                           class="custody-account-list__item__clipboard"
                         >
                           <span
-                            class="box mm-icon mm-icon--size-md box--display-inline-block box--flex-direction-row box--color-icon-muted"
+                            class="mm-box mm-icon mm-icon--size-md mm-box--display-inline-block mm-box--color-icon-muted"
                             style="mask-image: url('./images/icons/undefined.svg');"
                           />
                         </button>

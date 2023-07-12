@@ -23,7 +23,7 @@ exports[`error template matches the snapshot 1`] = `
             class="box mm-text mm-avatar-base mm-avatar-base--size-xl mm-avatar-icon mm-text--body-lg-medium mm-text--text-transform-uppercase box--display-flex box--flex-direction-row box--justify-content-center box--align-items-center box--color-error-default box--background-color-error-muted box--rounded-full box--border-color-transparent box--border-style-solid box--border-width-1"
           >
             <span
-              class="box mm-icon mm-icon--size-xl box--display-inline-block box--flex-direction-row box--color-inherit"
+              class="mm-box mm-icon mm-icon--size-xl mm-box--display-inline-block mm-box--color-inherit"
               style="mask-image: url('./images/icons/warning.svg');"
             />
           </div>
