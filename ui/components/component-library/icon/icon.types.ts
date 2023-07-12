@@ -1,5 +1,11 @@
-import type { BoxProps } from '../../ui/box/box.d';
+import React from 'react';
+
 import { IconColor } from '../../../helpers/constants/design-system';
+
+import type {
+  StyleUtilityProps,
+  PolymorphicComponentPropWithRef,
+} from '../box';
 
 export enum IconSize {
   Xs = 'xs',
@@ -170,7 +176,7 @@ export enum IconName {
   Wifi = 'wifi',
 }
 
-export interface IconProps extends BoxProps {
+export interface IconStyleUtilityProps extends StyleUtilityProps {
   /**
    * The name of the icon to display. Use the IconName enum
    * Search for an icon: https://metamask.github.io/metamask-storybook/?path=/story/components-componentlibrary-icon--default-story
@@ -197,3 +203,10 @@ export interface IconProps extends BoxProps {
    */
   style?: React.CSSProperties;
 }
+
+export type IconProps<C extends React.ElementType> =
+  PolymorphicComponentPropWithRef<C, IconStyleUtilityProps>;
+
+export type IconComponent = <C extends React.ElementType = 'span'>(
+  props: IconProps<C>,
+) => React.ReactElement | null;
