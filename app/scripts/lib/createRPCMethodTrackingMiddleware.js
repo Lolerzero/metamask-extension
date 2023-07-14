@@ -4,7 +4,10 @@ import { SECOND } from '../../../shared/constants/time';
 import {
   MetaMetricsEventCategory,
   MetaMetricsEventName,
+  MetaMetricsEventUiCustomization,
 } from '../../../shared/constants/metametrics';
+import { detectSIWE } from '@metamask/controller-utils';
+import { isValidAddress } from 'ethereumjs-util/dist';
 
 /**
  * These types determine how the method tracking middleware handles incoming
@@ -160,6 +163,31 @@ export default function createRPCMethodTrackingMiddleware({
 
       if (event === MetaMetricsEventName.SignatureRequested) {
         eventProperties.signature_type = method;
+
+        // In personal messages the first param is data while in typed messages second param is data
+        // if condition below is added to ensure that the right params are captured as data and address.
+        let data;
+        let from;
+        if (isValidAddress(req?.params?.[1])) {
+          data = req?.params?.[0];
+        } else {
+          data = req?.params?.[1];
+        }
+
+        try {
+          if (method === MESSAGE_TYPE.PERSONAL_SIGN) {
+            const { isSIWEMessage } = detectSIWE({ data });
+            if (isSIWEMessage) {
+              eventProperties.ui_customizations = (
+                eventProperties.ui_customizations || []
+              ).concat(MetaMetricsEventUiCustomization.Siwe);
+            }
+          }
+        } catch (e) {
+          console.warn(
+            `createRPCMethodTrackingMiddleware: Error calling securityProviderRequest - ${e}`,
+          );
+        }
       } else {
         eventProperties.method = method;
       }

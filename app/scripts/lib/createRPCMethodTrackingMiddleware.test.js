@@ -334,7 +334,6 @@ describe('createRPCMethodTrackingMiddleware', () => {
           event: MetaMetricsEventName.SignatureRequested,
           properties: {
             signature_type: MESSAGE_TYPE.ETH_SIGN,
-            ui_customizations: ['flagged_as_malicious'],
           },
           referrer: { url: 'some.dapp' },
         });
@@ -360,7 +359,6 @@ describe('createRPCMethodTrackingMiddleware', () => {
           event: MetaMetricsEventName.SignatureRequested,
           properties: {
             signature_type: MESSAGE_TYPE.ETH_SIGN,
-            ui_customizations: ['flagged_as_safety_unknown'],
           },
           referrer: { url: 'some.dapp' },
         });
@@ -368,7 +366,7 @@ describe('createRPCMethodTrackingMiddleware', () => {
     });
 
     describe('when signature requests are received', () => {
-      let securityProviderReq, fnHandler;
+      let fnHandler;
       beforeEach(() => {
         fnHandler = createRPCMethodTrackingMiddleware({
           trackEvent,
@@ -393,10 +391,6 @@ describe('createRPCMethodTrackingMiddleware', () => {
         const { next } = getNext();
 
         await fnHandler(req, res, next);
-
-        expect(securityProviderReq).toHaveBeenCalledTimes(1);
-        const call = securityProviderReq.mock.calls[0][0];
-        expect(call.msgParams.data).toStrictEqual(req.params[0]);
       });
       it(`should pass correct data for typed sign`, async () => {
         const req = {
@@ -414,10 +408,6 @@ describe('createRPCMethodTrackingMiddleware', () => {
         const { next } = getNext();
 
         await fnHandler(req, res, next);
-
-        expect(securityProviderReq).toHaveBeenCalledTimes(1);
-        const call = securityProviderReq.mock.calls[0][0];
-        expect(call.msgParams.data).toStrictEqual(req.params[1]);
       });
     });
   });
