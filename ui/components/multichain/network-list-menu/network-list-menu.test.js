@@ -37,10 +37,11 @@ const render = (showTestNetworks = false, currentChainId = '0x1') => {
 
 describe('NetworkListMenu', () => {
   it('displays important controls', () => {
-    const { getByText } = render();
+    const { getByText, getByPlaceholderText } = render();
 
     expect(getByText('Add network')).toBeInTheDocument();
     expect(getByText('Show test networks')).toBeInTheDocument();
+    expect(getByPlaceholderText('Search')).toBeInTheDocument();
   });
 
   it('renders mainnet item', () => {
@@ -70,5 +71,16 @@ describe('NetworkListMenu', () => {
     fireEvent.click(getByText(MAINNET_DISPLAY_NAME));
     expect(mockToggleNetworkMenu).toHaveBeenCalled();
     expect(mockSetProviderType).toHaveBeenCalled();
+  });
+
+  it('narrows down search results', () => {
+    const { queryByText, getByPlaceholderText } = render();
+
+    expect(queryByText('Chain 5')).toBeInTheDocument();
+
+    const searchBox = getByPlaceholderText('Search');
+    fireEvent.change(searchBox, { target: { value: 'Main' } });
+
+    expect(queryByText('Chain 5')).not.toBeInTheDocument();
   });
 });
