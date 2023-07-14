@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "ここからリクエスト"
   },
-  "moreComingSoon": {
-    "message": "さらに近日追加予定..."
-  },
   "mustSelectOne": {
     "message": "トークンを1つ以上選択する必要があります。"
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "ブロックエクスプローラーで開く"
-  },
-  "openSea": {
-    "message": "OpenSea (ベータ)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "アカウントが見当たらない場合は、HDパスを切り替えてみてください。"
-  },
-  "selectProvider": {
-    "message": "プロバイダーを選択してください:"
   },
   "selectType": {
     "message": "種類を選択"

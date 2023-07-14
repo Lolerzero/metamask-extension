@@ -77,9 +77,6 @@ describe('Transaction security provider', function () {
     await withFixtures(
       {
         fixtures: new FixtureBuilder()
-          .withPreferencesController({
-            transactionSecurityCheckEnabled: true,
-          })
           .withPermissionControllerConnectedToTestDapp()
           .build(),
         ganacheOptions,
@@ -117,9 +114,6 @@ describe('Transaction security provider', function () {
     await withFixtures(
       {
         fixtures: new FixtureBuilder()
-          .withPreferencesController({
-            transactionSecurityCheckEnabled: true,
-          })
           .withPermissionControllerConnectedToTestDapp()
           .build(),
         ganacheOptions,
@@ -157,9 +151,6 @@ describe('Transaction security provider', function () {
     await withFixtures(
       {
         fixtures: new FixtureBuilder()
-          .withPreferencesController({
-            transactionSecurityCheckEnabled: true,
-          })
           .withPermissionControllerConnectedToTestDapp()
           .build(),
         ganacheOptions,
@@ -197,9 +188,6 @@ describe('Transaction security provider', function () {
     await withFixtures(
       {
         fixtures: new FixtureBuilder()
-          .withPreferencesController({
-            transactionSecurityCheckEnabled: true,
-          })
           .withPermissionControllerConnectedToTestDapp()
           .build(),
         ganacheOptions,

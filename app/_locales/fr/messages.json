@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "Demandez ici"
   },
-  "moreComingSoon": {
-    "message": "D’autres à venir..."
-  },
   "mustSelectOne": {
     "message": "Vous devez sélectionner au moins 1 jeton."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "Ouvrir dans l’explorateur de blocs"
-  },
-  "openSea": {
-    "message": "OpenSea (Beta)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "Si vos comptes n’apparaissent pas ci-dessous, essayez de sélectionner le chemin HD."
-  },
-  "selectProvider": {
-    "message": "Sélectionner les fournisseurs :"
   },
   "selectType": {
     "message": "Sélectionner le type"

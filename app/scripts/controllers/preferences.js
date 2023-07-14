@@ -204,17 +204,6 @@ export default class PreferencesController {
   }
 
   /**
-   * Setter for the `transactionSecurityCheckEnabled` property
-   *
-   * @param transactionSecurityCheckEnabled
-   */
-  setTransactionSecurityCheckEnabled(transactionSecurityCheckEnabled) {
-    this.store.updateState({
-      transactionSecurityCheckEnabled,
-    });
-  }
-
-  /**
    * Add new methodData to state, to avoid requesting this information again through Infura
    *
    * @param {string} fourBytePrefix - Four-byte method signature

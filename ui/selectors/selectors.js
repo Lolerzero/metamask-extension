@@ -1423,16 +1423,6 @@ export function getIstokenDetectionInactiveOnNonMainnetSupportedNetwork(state) {
   return isDynamicTokenListAvailable && !useTokenDetection && !isMainnet;
 }
 
-/**
- * To get the `transactionSecurityCheckEnabled` value which determines whether we use the transaction security check
- *
- * @param {*} state
- * @returns Boolean
- */
-export function getIsTransactionSecurityCheckEnabled(state) {
-  return state.metamask.transactionSecurityCheckEnabled;
-}
-
 export function getIsCustomNetwork(state) {
   const chainId = getCurrentChainId(state);
 

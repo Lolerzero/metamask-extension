@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "यहां अनुरोध करें"
   },
-  "moreComingSoon": {
-    "message": "और अधिक जल्द ही आ रहा..."
-  },
   "mustSelectOne": {
     "message": "कम से कम 1 टोकन का चयन करना होगा।"
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "ब्लॉक एक्सप्लोरर में खोलें"
-  },
-  "openSea": {
-    "message": "OpenSea (बीटा)"
   },
   "openSeaNew": {
     "message": "ओपनसी"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "यदि आपको अपेक्षित खाते दिखाई नहीं देते हैं, तो HD पथ बदलने का प्रयास करें।"
-  },
-  "selectProvider": {
-    "message": "प्रदाताओं का चयन करें:"
   },
   "selectType": {
     "message": "प्रकार का चयन करें"

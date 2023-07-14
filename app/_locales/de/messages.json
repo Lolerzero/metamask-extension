@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "Hier anfragen"
   },
-  "moreComingSoon": {
-    "message": "Mehr in Kürze ..."
-  },
   "mustSelectOne": {
     "message": "Du musst mindestens 1 Token auswählen."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "Im Block-Explorer öffnen"
-  },
-  "openSea": {
-    "message": "OpenSea (Beta)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "Wenn Sie Ihre bestehenden Ledger-Konten nachfolgend nicht sehen, versuchen Sie, die Pfade zu \"Legacy (MEW / MyCrypto)\" zu ändern"
-  },
-  "selectProvider": {
-    "message": "Anbieter auswählen:"
   },
   "selectType": {
     "message": "Typ auswählen"

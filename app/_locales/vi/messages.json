@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "Yêu cầu tại đây"
   },
-  "moreComingSoon": {
-    "message": "Sắp có thêm..."
-  },
   "mustSelectOne": {
     "message": "Phải chọn ít nhất 1 token."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "Mở trên trình khám phá khối"
-  },
-  "openSea": {
-    "message": "OpenSea (Beta)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "Nếu bạn không thấy các tài khoản như mong đợi, hãy chuyển sang đường dẫn HD."
-  },
-  "selectProvider": {
-    "message": "Chọn nhà cung cấp:"
   },
   "selectType": {
     "message": "Chọn loại"

@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "여기에서 요청하세요"
   },
-  "moreComingSoon": {
-    "message": "더 추가 예정..."
-  },
   "mustSelectOne": {
     "message": "토큰을 1개 이상 선택해야 합니다."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "블록 탐색기 열기"
-  },
-  "openSea": {
-    "message": "OpenSea (베타)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "아래에 기존 Ledger 계정이 표시되지 않는다면 경로를 \"Legacy (MEW / MyCrypto)\"로 변경해 보세요."
-  },
-  "selectProvider": {
-    "message": "공급업체 선택"
   },
   "selectType": {
     "message": "유형 선택"

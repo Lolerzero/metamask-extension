@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "Buradan talep et"
   },
-  "moreComingSoon": {
-    "message": "Daha fazlası çok yakında..."
-  },
   "mustSelectOne": {
     "message": "En az bir token seçilmeli."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "Blok gezgininde aç"
-  },
-  "openSea": {
-    "message": "OpenSea (Beta)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "Beklediğiniz hesapları görmüyorsanız HD yoluna geçmeyi deneyin."
-  },
-  "selectProvider": {
-    "message": "Sağlayıcıları seç:"
   },
   "selectType": {
     "message": "Tür Seç"

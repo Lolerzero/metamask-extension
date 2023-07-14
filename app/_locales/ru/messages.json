@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "Запросите здесь"
   },
-  "moreComingSoon": {
-    "message": "Скоро появится больше..."
-  },
   "mustSelectOne": {
     "message": "Необходимо выбрать хотя бы 1 токен."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "Открыть в проводнике блоков"
-  },
-  "openSea": {
-    "message": "OpenSea (бета-версия)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "Если вы не видите ожидаемые счета, попробуйте переключиться на путь HD."
-  },
-  "selectProvider": {
-    "message": "Выберите поставщиков:"
   },
   "selectType": {
     "message": "Выбрать тип"

@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "在这里请求"
   },
-  "moreComingSoon": {
-    "message": "更多即将到来……"
-  },
   "mustSelectOne": {
     "message": "至少选择1种代币。"
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "在区块浏览器上打开"
-  },
-  "openSea": {
-    "message": "OpenSea（测试版）"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "如果您没有看到您期望的账户，请尝试切换 HD 路径。"
-  },
-  "selectProvider": {
-    "message": "选择提供程序："
   },
   "selectType": {
     "message": "选择类型"

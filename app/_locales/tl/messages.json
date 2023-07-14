@@ -1956,9 +1956,6 @@
   "missingSettingRequest": {
     "message": "Hilingin dito"
   },
-  "moreComingSoon": {
-    "message": "Marami pang parating..."
-  },
   "mustSelectOne": {
     "message": "Dapat pumili ng kahit 1 token lang."
   },
@@ -2509,9 +2506,6 @@
   },
   "openInBlockExplorer": {
     "message": "Buksan sa block explorer"
-  },
-  "openSea": {
-    "message": "OpenSea na (Beta)"
   },
   "openSeaNew": {
     "message": "OpenSea"
@@ -3084,9 +3078,6 @@
   },
   "selectPathHelp": {
     "message": "Kung hindi mo makita ang mga account na inaasahan mo, subukang ilipat sa HD path."
-  },
-  "selectProvider": {
-    "message": "Pumili ng mga provider:"
   },
   "selectType": {
     "message": "Pumili ng Uri"

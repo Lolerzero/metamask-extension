@@ -155,7 +155,6 @@ export default class TransactionController extends EventEmitter {
     this.getDeviceModel = opts.getDeviceModel;
     this.getAccountType = opts.getAccountType;
     this.getTokenStandardAndDetails = opts.getTokenStandardAndDetails;
-    this.securityProviderRequest = opts.securityProviderRequest;
     this.messagingSystem = opts.messenger;
 
     this.memStore = new ObservableStore({});
@@ -1593,7 +1592,7 @@ export default class TransactionController extends EventEmitter {
   }
 
   async _createTransaction(
-    txMethodType,
+    _txMethodType,
     txParams,
     origin,
     transactionType,
@@ -1675,15 +1674,6 @@ export default class TransactionController extends EventEmitter {
     txMeta.txParams.value = txMeta.txParams.value
       ? addHexPrefix(txMeta.txParams.value)
       : '0x0';
-
-    if (txMethodType && this.securityProviderRequest) {
-      const securityProviderResponse = await this.securityProviderRequest(
-        txMeta,
-        txMethodType,
-      );
-
-      txMeta.securityProviderResponse = securityProviderResponse;
-    }
 
     this.addTransaction(txMeta);
 
