@@ -1,4 +1,6 @@
 import { errorCodes } from 'eth-rpc-errors';
+import { detectSIWE } from '@metamask/controller-utils';
+import { isValidAddress } from 'ethereumjs-util/dist';
 import { MESSAGE_TYPE, ORIGIN_METAMASK } from '../../../shared/constants/app';
 import { SECOND } from '../../../shared/constants/time';
 import {
@@ -6,8 +8,6 @@ import {
   MetaMetricsEventName,
   MetaMetricsEventUiCustomization,
 } from '../../../shared/constants/metametrics';
-import { detectSIWE } from '@metamask/controller-utils';
-import { isValidAddress } from 'ethereumjs-util/dist';
 
 /**
  * These types determine how the method tracking middleware handles incoming
@@ -167,7 +167,6 @@ export default function createRPCMethodTrackingMiddleware({
         // In personal messages the first param is data while in typed messages second param is data
         // if condition below is added to ensure that the right params are captured as data and address.
         let data;
-        let from;
         if (isValidAddress(req?.params?.[1])) {
           data = req?.params?.[0];
         } else {
