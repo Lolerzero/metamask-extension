@@ -17,7 +17,7 @@ export const SECURITY_PROVIDER_CONFIG: SecurityProviderConfig = {
     tKeyName: 'blockaid',
     url: 'https://blockaid.io/',
   },
-};
+} as const;
 
 /** The reason, also referred to as the attack type, provided in the PPOM Response  */
 export enum BlockaidReason {
