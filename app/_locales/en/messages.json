@@ -2737,20 +2737,20 @@
     "message": "We've updated Swaps in the MetaMask extension to be easier and faster to use.",
     "description": "Description of a notification in the 'See What's New' popup. Describes NFT autodetection feature."
   },
+  "notifications21Title": {
+    "message": "Introducing new and refreshed Swaps!"
+  },
   "notifications22ActionText": {
     "message": "Enable security provider"
   },
   "notifications22DescriptionOne": {
     "message": "Get warnings from Blockaid whenever you recieve a known malicious request"
   },
-  "notifications22DescriptionTwo": {
-    "message": "Blockaid is the first security provider for this feature. More providers coming soon"
-  },
   "notifications22DescriptionThree": {
     "message": "Always be sure to do your own due diligence before approving any request"
   },
-  "notifications21Title": {
-    "message": "Introducing new and refreshed Swaps!"
+  "notifications22DescriptionTwo": {
+    "message": "Blockaid is the first security provider for this feature. More providers coming soon"
   },
   "notifications22Title": {
     "message": "Stay safe with Blockaid"
