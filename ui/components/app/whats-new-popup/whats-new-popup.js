@@ -100,6 +100,10 @@ function getActionFunctionById(id, history) {
       updateViewedNotifications({ 21: true });
       history.push(PREPARE_SWAP_ROUTE);
     },
+    22: () => {
+      updateViewedNotifications({ 22: true });
+      history.push(`${EXPERIMENTAL_ROUTE}#transaction-security-check`);
+    },
   };
 
   return actionFunctions[id];

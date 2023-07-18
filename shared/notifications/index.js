@@ -323,13 +323,13 @@ export const getTranslatedUINotifications = (t, locale) => {
     },
     22: {
       ...UI_NOTIFICATIONS[22],
-      title: 'Stay safe with Blockaid',
+      title: t('notifications22Title'),
       description: [
-        'Get warnings from Blockaid whenever you recieve a known malicious request',
-        'Blockaid is the first security provider for this feature. More providers coming soon',
-        'Always be sure to do your own due diligence before approving any request',
+        t('notifications22DescriptionOne'),
+        t('notifications22DescriptionTwo'),
+        t('notifications22DescriptionThree'),
       ],
-      actionText: 'Enable security provider',
+      actionText: t('notifications22ActionText'),
       date: UI_NOTIFICATIONS[21].date
         ? new Intl.DateTimeFormat(formattedLocale).format(
             new Date(UI_NOTIFICATIONS[21].date),
