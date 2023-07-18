@@ -360,6 +360,7 @@ export default function WhatsNewPopup({
     18: renderFirstNotification,
     19: renderFirstNotification,
     21: renderFirstNotification,
+    22: renderFirstNotification,
   };
 
   return (

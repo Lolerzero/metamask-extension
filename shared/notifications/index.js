@@ -114,6 +114,14 @@ export const UI_NOTIFICATIONS = {
       width: '100%',
     },
   },
+  22: {
+    id: 22,
+    date: null,
+    image: {
+      src: 'images/open-sea-security-provider.svg',
+      width: '100%',
+    },
+  },
 };
 
 export const getTranslatedUINotifications = (t, locale) => {
@@ -307,6 +315,21 @@ export const getTranslatedUINotifications = (t, locale) => {
       title: t('notifications21Title'),
       description: t('notifications21Description'),
       actionText: t('notifications21ActionText'),
+      date: UI_NOTIFICATIONS[21].date
+        ? new Intl.DateTimeFormat(formattedLocale).format(
+            new Date(UI_NOTIFICATIONS[21].date),
+          )
+        : '',
+    },
+    22: {
+      ...UI_NOTIFICATIONS[22],
+      title: 'Stay safe with Blockaid',
+      description: [
+        'Get warnings from Blockaid whenever you recieve a known malicious request',
+        'Blockaid is the first security provider for this feature. More providers coming soon',
+        'Always be sure to do your own due diligence before approving any request',
+      ],
+      actionText: 'Enable security provider',
       date: UI_NOTIFICATIONS[21].date
         ? new Intl.DateTimeFormat(formattedLocale).format(
             new Date(UI_NOTIFICATIONS[21].date),
