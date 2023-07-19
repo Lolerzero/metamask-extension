@@ -2765,6 +2765,10 @@ describe('Transaction Controller', function () {
         securityProviderResponse: {
           flagAsDangerous: 0,
         },
+        securityAlertResponse: {
+          result_type: 'Benign',
+          reason: 'none',
+        },
       };
 
       const expectedPayload = {
@@ -2789,6 +2793,8 @@ describe('Transaction Controller', function () {
           device_model: 'N/A',
           transaction_speed_up: false,
           ui_customizations: null,
+          security_alert_response: 'Benign',
+          security_alert_reason: 'none',
         },
         sensitiveProperties: {
           gas_price: '2',

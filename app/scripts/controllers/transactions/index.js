@@ -359,6 +359,10 @@ export default class TransactionController extends EventEmitter {
       undefined,
       undefined,
       opts.id,
+      undefined,
+      ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+      opts.securityAlertResponse,
+      ///: END:ONLY_INCLUDE_IN
     );
 
     const txId = initialTxMeta.id;
@@ -1600,6 +1604,9 @@ export default class TransactionController extends EventEmitter {
     sendFlowHistory = [],
     actionId,
     options,
+    ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+    securityAlertResponse,
+    ///: END:ONLY_INCLUDE_IN
   ) {
     if (
       transactionType !== undefined &&
@@ -1636,6 +1643,9 @@ export default class TransactionController extends EventEmitter {
       txParams: normalizedTxParams,
       origin,
       sendFlowHistory,
+      ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+      securityAlertResponse,
+      ///: END:ONLY_INCLUDE_IN
     });
 
     // Add actionId to txMeta to check if same actionId is seen again
@@ -2322,6 +2332,9 @@ export default class TransactionController extends EventEmitter {
       finalApprovalAmount,
       contractMethodName,
       securityProviderResponse,
+      ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+      securityAlertResponse,
+      ///: END:ONLY_INCLUDE_IN
     } = txMeta;
 
     const source = referrer === ORIGIN_METAMASK ? 'user' : 'dapp';
@@ -2498,6 +2511,11 @@ export default class TransactionController extends EventEmitter {
       transaction_type: transactionType,
       transaction_speed_up: type === TransactionType.retry,
       ui_customizations: uiCustomizations,
+      ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+      security_alert_response:
+        securityAlertResponse.result_type ?? 'not_applicable',
+      security_alert_reason: securityAlertResponse.reason ?? 'not_applicable',
+      ///: END:ONLY_INCLUDE_IN
     };
 
     if (transactionContractMethod === contractMethodNames.APPROVE) {
