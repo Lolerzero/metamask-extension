@@ -2513,8 +2513,8 @@ export default class TransactionController extends EventEmitter {
       ui_customizations: uiCustomizations,
       ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
       security_alert_response:
-        securityAlertResponse.result_type ?? 'not_applicable',
-      security_alert_reason: securityAlertResponse.reason ?? 'not_applicable',
+        securityAlertResponse?.result_type ?? 'not_applicable',
+      security_alert_reason: securityAlertResponse?.reason ?? 'not_applicable',
       ///: END:ONLY_INCLUDE_IN
     };
 
