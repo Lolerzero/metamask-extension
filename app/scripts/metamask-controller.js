@@ -2156,6 +2156,9 @@ export default class MetamaskController extends EventEmitter {
       setIpfsGateway: preferencesController.setIpfsGateway.bind(
         preferencesController,
       ),
+      setUseIpfsGateway: preferencesController.setUseIpfsGateway.bind(
+        preferencesController,
+      ),
       setParticipateInMetaMetrics:
         metaMetricsController.setParticipateInMetaMetrics.bind(
           metaMetricsController,
