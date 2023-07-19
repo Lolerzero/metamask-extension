@@ -2423,6 +2423,8 @@ describe('Transaction Controller', function () {
             device_model: 'N/A',
             transaction_speed_up: false,
             ui_customizations: null,
+            security_alert_reason: 'not_applicable',
+            security_alert_response: 'not_applicable',
           },
           sensitiveProperties: {
             default_gas: '0.000031501',
@@ -2510,6 +2512,8 @@ describe('Transaction Controller', function () {
             device_model: 'N/A',
             transaction_speed_up: false,
             ui_customizations: null,
+            security_alert_reason: 'not_applicable',
+            security_alert_response: 'not_applicable',
           },
           sensitiveProperties: {
             default_gas: '0.000031501',
@@ -2609,6 +2613,8 @@ describe('Transaction Controller', function () {
             device_model: 'N/A',
             transaction_speed_up: false,
             ui_customizations: null,
+            security_alert_reason: 'not_applicable',
+            security_alert_response: 'not_applicable',
           },
           sensitiveProperties: {
             default_gas: '0.000031501',
@@ -2698,6 +2704,8 @@ describe('Transaction Controller', function () {
             device_model: 'N/A',
             transaction_speed_up: false,
             ui_customizations: null,
+            security_alert_reason: 'not_applicable',
+            security_alert_response: 'not_applicable',
           },
           sensitiveProperties: {
             default_gas: '0.000031501',
@@ -2867,6 +2875,8 @@ describe('Transaction Controller', function () {
           device_model: 'N/A',
           transaction_speed_up: false,
           ui_customizations: null,
+          security_alert_reason: 'not_applicable',
+          security_alert_response: 'not_applicable',
         },
         sensitiveProperties: {
           baz: 3.0,
@@ -2941,6 +2951,8 @@ describe('Transaction Controller', function () {
           device_model: 'N/A',
           transaction_speed_up: false,
           ui_customizations: ['flagged_as_malicious'],
+          security_alert_reason: 'not_applicable',
+          security_alert_response: 'not_applicable',
         },
         sensitiveProperties: {
           baz: 3.0,
@@ -3015,6 +3027,8 @@ describe('Transaction Controller', function () {
           device_model: 'N/A',
           transaction_speed_up: false,
           ui_customizations: ['flagged_as_safety_unknown'],
+          security_alert_reason: 'not_applicable',
+          security_alert_response: 'not_applicable',
         },
         sensitiveProperties: {
           baz: 3.0,
@@ -3097,6 +3111,8 @@ describe('Transaction Controller', function () {
           device_model: 'N/A',
           transaction_speed_up: false,
           ui_customizations: null,
+          security_alert_reason: 'not_applicable',
+          security_alert_response: 'not_applicable',
         },
         sensitiveProperties: {
           baz: 3.0,
