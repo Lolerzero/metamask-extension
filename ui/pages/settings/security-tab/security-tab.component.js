@@ -44,7 +44,7 @@ export default class SecurityTab extends PureComponent {
     participateInMetaMetrics: PropTypes.bool.isRequired,
     setParticipateInMetaMetrics: PropTypes.func.isRequired,
     showIncomingTransactions: PropTypes.bool.isRequired,
-    setShowIncomingTransactionsFeatureFlag: PropTypes.func.isRequired,
+    setShowIncomingTransactions: PropTypes.func.isRequired,
     setUsePhishDetect: PropTypes.func.isRequired,
     usePhishDetect: PropTypes.bool.isRequired,
     useTokenDetection: PropTypes.bool.isRequired,
@@ -152,7 +152,7 @@ export default class SecurityTab extends PureComponent {
 
   renderIncomingTransactionsOptIn() {
     const { t } = this.context;
-    const { showIncomingTransactions, setShowIncomingTransactionsFeatureFlag } =
+    const { showIncomingTransactions, setShowIncomingTransactions } =
       this.props;
 
     return (
@@ -189,9 +189,7 @@ export default class SecurityTab extends PureComponent {
           >
             <ToggleButton
               value={showIncomingTransactions}
-              onToggle={(value) =>
-                setShowIncomingTransactionsFeatureFlag(!value)
-              }
+              onToggle={(value) => setShowIncomingTransactions(!value)}
               offLabel={t('off')}
               onLabel={t('on')}
             />

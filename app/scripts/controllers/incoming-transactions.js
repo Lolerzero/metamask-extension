@@ -305,7 +305,7 @@ export default class IncomingTransactionsController {
     const { completedOnboarding } = this.onboardingController.store.getState();
 
     const hasIncomingTransactionsFeatureEnabled = Boolean(
-      featureFlags.showIncomingTransactions,
+      featureFlags.showIncomingTransactions[chainId],
     );
 
     const isEtherscanSupportedNetwork = Boolean(

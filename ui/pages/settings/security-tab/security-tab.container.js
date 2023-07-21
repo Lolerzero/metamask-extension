@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setParticipateInMetaMetrics: (val) =>
       dispatch(setParticipateInMetaMetrics(val)),
-    setShowIncomingTransactionsFeatureFlag: (shouldShow) =>
+    setShowIncomingTransactions: (shouldShow) =>
       dispatch(setFeatureFlag('showIncomingTransactions', shouldShow)),
     setUsePhishDetect: (val) => dispatch(setUsePhishDetect(val)),
     setUseCurrencyRateCheck: (val) => dispatch(setUseCurrencyRateCheck(val)),
