@@ -11,6 +11,9 @@ import Typography from '../../../ui/typography';
 import { TypographyVariant } from '../../../../helpers/constants/design-system';
 
 import { isSuspiciousResponse } from '../../../../../shared/modules/security-provider.utils';
+///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+import BlockaidBannerAlert from '../../security-provider-banner-alert/blockaid-banner-alert/blockaid-banner-alert';
+///: END:ONLY_INCLUDE_IN
 import SecurityProviderBannerMessage from '../../security-provider-banner-message/security-provider-banner-message';
 
 import { ConfirmPageContainerSummary, ConfirmPageContainerWarning } from '.';
@@ -216,6 +219,13 @@ export default class ConfirmPageContainerContent extends Component {
         {ethGasPriceWarning && (
           <ConfirmPageContainerWarning warning={ethGasPriceWarning} />
         )}
+        {
+          ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+          <BlockaidBannerAlert
+            securityAlertResponse={txData?.securityAlertResponse}
+          />
+          ///: END:ONLY_INCLUDE_IN
+        }
         {isSuspiciousResponse(txData?.securityProviderResponse) && (
           <SecurityProviderBannerMessage
             securityProviderResponse={txData.securityProviderResponse}

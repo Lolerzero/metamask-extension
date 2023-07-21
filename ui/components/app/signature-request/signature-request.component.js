@@ -43,6 +43,9 @@ import {
   ///: END:ONLY_INCLUDE_IN
 } from '../../component-library';
 import { Text } from '../../component-library/text/deprecated';
+///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+import BlockaidBannerAlert from '../security-provider-banner-alert/blockaid-banner-alert/blockaid-banner-alert';
+///: END:ONLY_INCLUDE_IN
 import Footer from './signature-request-footer';
 import Message from './signature-request-message';
 
@@ -287,12 +290,18 @@ export default class SignatureRequest extends PureComponent {
           />
         </div>
         <div className="signature-request-content">
+          {
+            ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+            <BlockaidBannerAlert
+              securityAlertResponse={txData?.securityAlertResponse}
+            />
+            ///: END:ONLY_INCLUDE_IN
+          }
           {isSuspiciousResponse(txData?.securityProviderResponse) && (
             <SecurityProviderBannerMessage
               securityProviderResponse={txData.securityProviderResponse}
             />
           )}
-
           {
             ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
             this.props.selectedAccount.address === address ? null : (
@@ -322,7 +331,6 @@ export default class SignatureRequest extends PureComponent {
             )
             ///: END:ONLY_INCLUDE_IN
           }
-
           <div className="signature-request__origin">
             <SiteOrigin
               siteOrigin={origin}
@@ -331,7 +339,6 @@ export default class SignatureRequest extends PureComponent {
               chip
             />
           </div>
-
           <Text
             className="signature-request__content__title"
             variant={TextVariant.headingMd}

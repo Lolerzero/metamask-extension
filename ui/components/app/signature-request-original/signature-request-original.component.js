@@ -31,6 +31,9 @@ import {
   BackgroundColor,
   ///: END:ONLY_INCLUDE_IN
 } from '../../../helpers/constants/design-system';
+///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+import BlockaidBannerAlert from '../security-provider-banner-alert/blockaid-banner-alert/blockaid-banner-alert';
+///: END:ONLY_INCLUDE_IN
 import ConfirmPageContainerNavigation from '../confirm-page-container/confirm-page-container-navigation';
 import SecurityProviderBannerMessage from '../security-provider-banner-message/security-provider-banner-message';
 ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
@@ -137,12 +140,18 @@ export default class SignatureRequestOriginal extends Component {
 
     return (
       <div className="request-signature__body">
+        {
+          ///: BEGIN:ONLY_INCLUDE_IN(blockaid)
+          <BlockaidBannerAlert
+            securityAlertResponse={txData?.securityAlertResponse}
+          />
+          ///: END:ONLY_INCLUDE_IN
+        }
         {isSuspiciousResponse(txData?.securityProviderResponse) && (
           <SecurityProviderBannerMessage
             securityProviderResponse={txData.securityProviderResponse}
           />
         )}
-
         {
           ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
           this.props.selectedAccount.address ===
@@ -170,7 +179,6 @@ export default class SignatureRequestOriginal extends Component {
           )
           ///: END:ONLY_INCLUDE_IN
         }
-
         <div className="request-signature__origin">
           <SiteOrigin
             title={txData.msgParams.origin}
@@ -183,7 +191,6 @@ export default class SignatureRequestOriginal extends Component {
             chip
           />
         </div>
-
         <Typography
           className="request-signature__content__title"
           variant={TypographyVariant.H3}
@@ -201,7 +208,6 @@ export default class SignatureRequestOriginal extends Component {
         >
           {this.context.t('signatureRequestGuidance')}
         </Typography>
-
         <div className={classnames('request-signature__notice')}>{notice}</div>
         <div className="request-signature__rows">
           {rows.map(({ name, value }, index) => {
