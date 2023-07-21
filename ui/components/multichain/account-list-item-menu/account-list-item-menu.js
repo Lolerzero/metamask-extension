@@ -2,6 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
+import { toChecksumHexAddress } from '@metamask/controller-utils';
 import { mmiActionsFactory } from '../../../store/institutional/institution-background';
 ///: END:ONLY_INCLUDE_IN
 import { MetaMetricsContext } from '../../../contexts/metametrics';
@@ -14,9 +15,6 @@ import {
   getMetaMaskAccountsOrdered,
   ///: END:ONLY_INCLUDE_IN
 } from '../../../selectors';
-///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
-import { toChecksumHexAddress } from '../../../../shared/modules/hexstring-utils';
-///: END:ONLY_INCLUDE_IN
 import { findKeyringForAddress } from '../../../ducks/metamask/metamask';
 import { MenuItem } from '../../ui/menu';
 import {
@@ -138,6 +136,7 @@ export const AccountListItemMenu = ({
             metricsLocation={METRICS_LOCATION}
             closeMenu={closeMenu}
             textProps={{ variant: TextVariant.bodySm }}
+            address={identity.address}
           />
           {isRemovable ? (
             <MenuItem
