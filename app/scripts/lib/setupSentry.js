@@ -453,6 +453,6 @@ function toMetamaskUrl(origUrl) {
   if (!filePath) {
     return origUrl;
   }
-  const metamaskUrl = `metamask${filePath}`;
+  const metamaskUrl = `/metamask${filePath}`;
   return metamaskUrl;
 }
