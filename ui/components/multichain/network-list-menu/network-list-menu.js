@@ -37,7 +37,6 @@ import {
   Box,
   Text,
   TextFieldSearch,
-  Text,
 } from '../../component-library';
 import { ADD_POPULAR_CUSTOM_NETWORK } from '../../../helpers/constants/routes';
 import { getEnvironmentType } from '../../../../app/scripts/lib/util';
@@ -78,6 +77,8 @@ export const NetworkListMenu = ({ onClose }) => {
   const completedOnboarding = useSelector(getCompletedOnboarding);
 
   const lineaMainnetReleased = useSelector(isLineaMainnetNetworkReleased);
+
+  const showSearch = nonTestNetworks.length > 3;
 
   useEffect(() => {
     if (currentlyOnTestNetwork) {
@@ -123,7 +124,7 @@ export const NetworkListMenu = ({ onClose }) => {
           iconSrc={network?.rpcPrefs?.imageUrl}
           key={`${network.id || network.chainId}-${index}`}
           selected={isCurrentNetwork}
-          focus={isCurrentNetwork && !isSearching}
+          focus={isCurrentNetwork && !showSearch}
           onClick={() => {
             dispatch(toggleNetworkMenu());
             if (network.providerType) {
@@ -188,7 +189,7 @@ export const NetworkListMenu = ({ onClose }) => {
           {t('networkMenuHeading')}
         </ModalHeader>
         <>
-          {nonTestNetworks.length > 3 ? (
+          {showSearch ? (
             <Box
               paddingLeft={4}
               paddingRight={4}
