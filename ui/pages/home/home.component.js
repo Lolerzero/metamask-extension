@@ -62,7 +62,6 @@ import {
   BUILD_QUOTE_ROUTE,
   VIEW_QUOTE_ROUTE,
   CONFIRMATION_V_NEXT_ROUTE,
-  ONBOARDING_SECURE_YOUR_WALLET_ROUTE,
   ///: BEGIN:ONLY_INCLUDE_IN(build-mmi)
   CONFIRM_ADD_CUSTODIAN_TOKEN,
   INTERACTIVE_REPLACEMENT_TOKEN_PAGE,
@@ -118,7 +117,6 @@ export default class Home extends PureComponent {
     hasTransactionPendingApprovals: PropTypes.bool.isRequired,
     hasWatchTokenPendingApprovals: PropTypes.bool,
     hasWatchNftPendingApprovals: PropTypes.bool,
-    shouldShowSeedPhraseReminder: PropTypes.bool.isRequired,
     isPopup: PropTypes.bool,
     isNotification: PropTypes.bool.isRequired,
     firstPermissionsRequestId: PropTypes.string,
@@ -372,9 +370,6 @@ export default class Home extends PureComponent {
     const { t } = this.context;
 
     const {
-      history,
-      shouldShowSeedPhraseReminder,
-      isPopup,
       shouldShowWeb3ShimUsageNotification,
       setWeb3ShimUsageAlertDismissed,
       originOfCurrentTab,
@@ -569,26 +564,6 @@ export default class Home extends PureComponent {
             key="home-web3ShimUsageNotification"
           />
         ) : null}
-        {
-          ///: BEGIN:ONLY_INCLUDE_IN(build-main,build-beta,build-flask)
-          shouldShowSeedPhraseReminder ? (
-            <HomeNotification
-              descriptionText={t('backupApprovalNotice')}
-              acceptText={t('backupNow')}
-              onAccept={() => {
-                const backUpSRPRoute = `${ONBOARDING_SECURE_YOUR_WALLET_ROUTE}/?isFromReminder=true`;
-                if (isPopup) {
-                  global.platform.openExtensionInBrowser(backUpSRPRoute);
-                } else {
-                  history.push(backUpSRPRoute);
-                }
-              }}
-              infoText={t('backupApprovalInfo')}
-              key="home-backupApprovalNotice"
-            />
-          ) : null
-          ///: END:ONLY_INCLUDE_IN
-        }
         {infuraBlocked && this.state.canShowBlockageNotification ? (
           <HomeNotification
             descriptionText={t('infuraBlockedNotification', [
