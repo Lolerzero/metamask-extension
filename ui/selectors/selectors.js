@@ -984,7 +984,7 @@ function getAllowedAnnouncementIds(state) {
   const currentlyUsingLedgerLive =
     getLedgerTransportType(state) === LedgerTransportTypes.live;
   const isFirefox = window.navigator.userAgent.includes('Firefox');
-  const isSwapsChain = getIsSwapsChain(state);
+
 
   return {
     1: false,
